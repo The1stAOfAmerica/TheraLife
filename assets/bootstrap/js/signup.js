@@ -1,22 +1,32 @@
-import {createUserWithEmailAndPassword, getAuth} from "firebase/auth";
+// import {createUserWithEmailAndPassword, getAuth} from "firebase/auth";
 
 
-function start(){
-    alert("1")
+const SignupForm = document.getElementById("signup-form");
+const SignupButton = document.getElementById("signup-form-submit");
+let name = "no";
 
-    const SignupForm = document.getElementById("signup-form");
-    const email = SignupForm.signupmail.value;
-    const auth = getAuth();
-    const password = SignupForm.signuppass.value;
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            alert("signed in")
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
-        });
+
+function getName(){
+    return name;
 }
 
+SignupButton.addEventListener("click", (e) => {
+
+    e.preventDefault();
+    // const auth = getAuth();
+    const email = SignupForm.username.value;
+    name = email;
+    window.location.href = "landing.html";
+    const password = SignupForm.password.value;
+
+    // createUserWithEmailAndPassword(auth, email, password)
+    // .then((userCredential) => {
+    //     const user = userCredential.user;
+    //     window.location.href = "/landing.html";
+    // })
+    // .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     // ..
+    // });
+})
