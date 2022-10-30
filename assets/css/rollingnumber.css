@@ -1,0 +1,50 @@
+@property --num {
+  syntax: "<integer>";
+  initial-value: 1337;
+  inherits: false;
+}
+
+#rollingnumbers {
+  animation: counter 4s;
+  counter-reset: num var(--num);
+  font: 800 40px system-ui;
+  padding: 2rem;
+}
+
+#rollingnumbers::after {
+  content: counter(num);
+}
+
+@keyframes counter {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: 1337;
+  }
+}
+
+li.nav-item:hover {
+  color: var(--red);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link:before {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: red;
+  transition: width 1s ease;
+}
+
+.nav-link:hover:before {
+  width: 100%;
+}
+
